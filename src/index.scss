@@ -1,0 +1,22 @@
+/*COLOR SCHEME*/
+$lightShade: #fff;
+$lightAccent: #ffd12c;
+$mainColor: #45009c;
+$darkAccent: #7e7ca7;
+$darkShade: #201c37;
+/*SHADOW SCHEME*/
+$darkShadeShadow: #201c37b6;
+
+body {
+	background-color: $lightShade;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+.TopBar {
+	padding: 3px 6px;
+	background-color: $darkShade;
+	font-family: 'Bebas Neue', cursive;
+	color: $lightAccent;
+	font-size: 40px;
+	box-shadow: $darkShadeShadow 0px 3px 10px 5px;
+}
