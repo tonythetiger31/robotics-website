@@ -6,17 +6,146 @@ $darkAccent: #7e7ca7;
 $darkShade: #201c37;
 /*SHADOW SCHEME*/
 $darkShadeShadow: #201c37b6;
+/*FONTS*/
+$fontBebasNeue: 'Bebas Neue', sans-serif;
+$fontRobotoCondensed: 'Roboto Condensed', sans-serif;
+/*MISC*/
+$topBarHeight: 54px;
+$defaultHeightForSections: calc(100vh - #{$topBarHeight});
+$containerGradient: rgba(255, 255, 255, 0.699),rgba(255, 255, 255, 0.699);
+@mixin teamTitle($fontSize, $padding) {
+	display: inline-block;
+	font-family: 'Bebas Neue', sans-serif;
+	font-size: $fontSize;
+	padding: $padding;
+	color: $lightAccent;
+}
+
+@mixin normalButton($fontSize, $color, $backgroundColor, $fontFamilly) {
+	border: none;
+	background-color: $backgroundColor;
+	color: $color;
+	font-size: $fontSize;
+	font-family: $fontFamilly;
+	padding: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+@mixin flexContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: $defaultHeightForSections;
+	background-position: center;
+	background-size: cover;
+}
+@mixin subtitle {
+	font-size: 50px;
+	font-family: $fontBebasNeue;
+}
 
 body {
 	background-color: $lightShade;
 	margin: 0;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto Condensed', sans-serif;
 }
+
 .TopBar {
-	padding: 3px 6px;
+	top: 0;
+	position: sticky;
 	background-color: $darkShade;
-	font-family: 'Bebas Neue', cursive;
-	color: $lightAccent;
-	font-size: 40px;
 	box-shadow: $darkShadeShadow 0px 3px 10px 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	font-size: 30px;
+	color: $lightShade;
+	align-items: center;
+	height: $topBarHeight;
+	transition: all 0.3s;
+	.topBarButton {
+		cursor: pointer;
+		transition: 0.2s all;
+		&:hover {
+			color: $darkAccent;
+		}
+	}
+	.title {
+		@include teamTitle(40px, 3px 6px);
+		animation-name: appear;
+		animation-duration:.3s;
+		overflow: hidden;
+		flex-basis: auto;
+		display: block;
+	}
+	@keyframes disappear {
+		0%{
+			color:$lightAccent;
+		}
+		100%{
+			color: $darkShade;
+		}		
+	}
+	@keyframes appear {
+		0%{
+			color: $darkShade;
+			letter-spacing: -1em;
+		}
+		100%{
+			color:$lightAccent;
+			letter-spacing: normal;
+		}	
+	}
+}
+.LandingContainer {
+	height: $defaultHeightForSections;
+	display: grid;
+	place-items: center;
+	background-image: linear-gradient($containerGradient),
+		url(./resources/groupWork.jpg);
+	background-position: center;
+	background-size: cover;
+	transition: all 1s;
+	.title {
+		@include teamTitle(90px, 0px);
+		color: $mainColor;
+	}
+
+	.moto {
+		font-size: 40px;
+		color: $darkShade;
+		margin-bottom: 10px;
+	}
+	button {
+		@include normalButton(30px, $lightAccent, $darkShade, $fontBebasNeue);
+		box-shadow: inset 0 0 0 0 $mainColor;
+		transition: ease-out 0.7s;
+		&:hover {
+			box-shadow: inset 10em 0 0 0 $mainColor;
+		}
+	}
+}
+.AboutContainer,
+.SocialContainer,
+.ContactContainer {
+	@include flexContainer();
+	.subTitle {
+		@include subtitle();
+	}
+	.childContainer {
+		font-size: 35px;
+		margin: 20vw;
+	}
+}
+.AboutContainer {
+	background-image: linear-gradient($containerGradient),
+		url(./resources/sleepyRobotBall.jpg);
+}
+.SocialContainer{
+	background-image: linear-gradient($containerGradient),
+		url(./resources/robot.jpg);
+}
+.ContactContainer{
+	background-image: linear-gradient($containerGradient),
+		url(./resources/robot2.jpg);
 }
