@@ -12,7 +12,7 @@ $fontRobotoCondensed: 'Roboto Condensed', sans-serif;
 /*MISC*/
 $topBarHeight: 54px;
 $defaultHeightForSections: calc(100vh - #{$topBarHeight});
-$containerGradient: rgba(255, 255, 255, 0.699),rgba(255, 255, 255, 0.699);
+$containerGradient: rgba(255, 255, 255, 0.699), rgba(255, 255, 255, 0.699);
 @mixin teamTitle($fontSize, $padding) {
 	display: inline-block;
 	font-family: 'Bebas Neue', sans-serif;
@@ -48,8 +48,44 @@ body {
 	background-color: $lightShade;
 	margin: 0;
 	font-family: 'Roboto Condensed', sans-serif;
+}	
+.App{
+	animation: slideIn 1s;
 }
+@keyframes slideIn{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
 
+}
+.loaderContainer{
+	z-index: 1;
+	height: 100vh;
+	width: 100vw;
+	display:grid;
+	place-items:center;
+	position: fixed;
+	background-color: $lightShade;
+	.loader {
+		border: 16px solid $lightShade;
+		border-radius: 50%;
+		border-top: 16px solid $mainColor;
+		width: 120px;
+		height: 120px;
+		animation: spin .7s linear infinite;
+	}
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
 .TopBar {
 	top: 0;
 	position: sticky;
@@ -73,44 +109,51 @@ body {
 	.title {
 		@include teamTitle(40px, 3px 6px);
 		animation-name: appear;
-		animation-duration:.3s;
+		animation-duration: 0.3s;
 		overflow: hidden;
 		flex-basis: auto;
 		display: block;
 	}
 	@keyframes disappear {
-		0%{
-			color:$lightAccent;
+		0% {
+			color: $lightAccent;
 		}
-		100%{
+		100% {
 			color: $darkShade;
-		}		
+		}
 	}
 	@keyframes appear {
-		0%{
+		0% {
 			color: $darkShade;
 			letter-spacing: -1em;
 		}
-		100%{
-			color:$lightAccent;
+		100% {
+			color: $lightAccent;
 			letter-spacing: normal;
-		}	
+		}
 	}
 }
 .LandingContainer {
 	height: $defaultHeightForSections;
 	display: grid;
 	place-items: center;
-	background-image: linear-gradient($containerGradient),
-		url(./resources/groupWork.jpg);
 	background-position: center;
+	background-attachment: fixed;
 	background-size: cover;
 	transition: all 1s;
 	.title {
 		@include teamTitle(90px, 0px);
 		color: $mainColor;
+		// animation: expandLettering 1s;
 	}
-
+	// @keyframes expandLettering {
+	// 	0% {
+	// 		letter-spacing: -0.2em;
+	// 	}
+	// 	100%{
+	// 		letter-spacing: normal;
+	// 	}
+	// }
 	.moto {
 		font-size: 40px;
 		color: $darkShade;
@@ -125,9 +168,7 @@ body {
 		}
 	}
 }
-.AboutContainer,
-.SocialContainer,
-.ContactContainer {
+.ContentContainer {
 	@include flexContainer();
 	.subTitle {
 		@include subtitle();
@@ -137,15 +178,17 @@ body {
 		margin: 20vw;
 	}
 }
-.AboutContainer {
-	background-image: linear-gradient($containerGradient),
-		url(./resources/sleepyRobotBall.jpg);
-}
-.SocialContainer{
-	background-image: linear-gradient($containerGradient),
-		url(./resources/robot.jpg);
-}
-.ContactContainer{
-	background-image: linear-gradient($containerGradient),
-		url(./resources/robot2.jpg);
+
+.DonateContainer {
+	button {
+		@include normalButton(30px, $lightAccent, $darkShade, $fontBebasNeue);
+		margin-top: 0.3em;
+		display: block;
+		letter-spacing: 0.5px;
+		box-shadow: inset 0 0 0 0 $mainColor;
+		transition: ease-out 0.4s;
+		&:hover {
+			box-shadow: inset 8.5em 0 0 0 $mainColor;
+		}
+	}
 }

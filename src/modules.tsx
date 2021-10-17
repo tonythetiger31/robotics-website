@@ -1,5 +1,4 @@
-import React, { Ref } from 'react';
-import ReactDOM from 'react-dom';
+import React, { FC } from 'react';
 import { TOP_BAR_HEIGHT } from './strings';
 
 export function scrollToRef(
@@ -25,9 +24,17 @@ export function divInView(
 	}
 	return undefined;
 }
-export function toggleTopBarTitle(
-	topBarTitle: React.MutableRefObject<HTMLDivElement | null>,
-	setDisplayTitle: React.Dispatch<React.SetStateAction<boolean>>
-) {
-		console.log('trigger')
-}
+const Loader: FC<{ allAssetsAreLoaded: boolean }> = ({
+	allAssetsAreLoaded,
+}) => {
+	return (
+		<>
+			{!allAssetsAreLoaded && (
+				<div className="loaderContainer">
+					<div className="loader" />
+				</div>
+			)}
+		</>
+	);
+};
+export { Loader };
