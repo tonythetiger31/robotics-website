@@ -8,6 +8,7 @@ const ContentContainer: FC<{
 	elementRef: React.MutableRefObject<HTMLDivElement | null>;
 	backgroundImage: HTMLImageElement;
 	fullContainerAccess?: boolean;
+	imgAssetLoader: string;
 }> = ({
 	content,
 	title,
@@ -15,15 +16,16 @@ const ContentContainer: FC<{
 	elementRef,
 	backgroundImage,
 	fullContainerAccess,
+	imgAssetLoader
 }) => {
 	const { setAssetsLoaded } = useContext(appContext) as appContextType;
 	const [backGroundImageToBeDisplayed, setbackGroundImageToBeDisplayed] =
 		useState('none');
 	backgroundImage.onload = () => {
 		setAssetsLoaded(prev => {
-			if ((prev as any)[title] !== true) {
+			if ((prev as any)[imgAssetLoader] !== true) {
 				var newLoaded = { ...prev } as any;
-				newLoaded[title] = true;
+				newLoaded[imgAssetLoader] = true;
 				return newLoaded as loaded;
 			}
 			return prev;

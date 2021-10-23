@@ -8,7 +8,7 @@ import LandingPage from './components/LandingContainer';
 import TopBar from './components/TopBar';
 import { divInView, Loader } from './modules';
 import ContentContainer from './components/ContentContainer';
-import { ABOUT, CONTACT, DONATE, RESPONSIVENESS_WARNING, SOCIAL } from './strings';
+import { ABOUT, DONATE, RESPONSIVENESS_WARNING, OUR_GOAL, NON_PROFIT } from './strings';
 import { loaded } from './types';
 export const appContext: any = createContext(null);
 
@@ -17,8 +17,8 @@ function App() {
 	const [assetsLoaded, setAssetsLoaded] = useState<loaded>({
 		Landing: false,
 		About: false,
-		Social: false,
-		Contact: false,
+		OurGoal: false,
+		NonProfit: false,
 		Donate: false,
 	});
 	useEffect(() => {
@@ -28,8 +28,8 @@ function App() {
 	},[])
 	const AboutContainer = useRef<HTMLDivElement>(null),
 		LandingContainer = useRef<HTMLDivElement>(null),
-		SocialContainer = useRef<HTMLDivElement>(null),
-		ContactContainer = useRef<HTMLDivElement>(null),
+		OurGoalContainer = useRef<HTMLDivElement>(null),
+		NonProfitContainer = useRef<HTMLDivElement>(null),
 		DonateContainer = useRef<HTMLDivElement>(null),
 		landingTitleDiv = useRef<HTMLDivElement>(null),
 		topBarTitle = useRef<HTMLDivElement>(null),
@@ -64,8 +64,8 @@ function App() {
 		value={{
 			AboutContainer,
 			LandingContainer,
-			SocialContainer,
-			ContactContainer,
+			OurGoalContainer,
+			NonProfitContainer,
 			DonateContainer,
 			landingTitleDiv,
 			topBarTitle,
@@ -85,20 +85,23 @@ function App() {
 					className="AboutContainer"
 					backgroundImage={loadingImages.robot}
 					elementRef={AboutContainer}
+					imgAssetLoader="About"
 				/>
 				<ContentContainer
-					content={<>{SOCIAL}</>}
-					title="Social"
-					className="SocialContainer"
+					content={<>{OUR_GOAL}</>}
+					title="Our Goal"
+					className="OurGoalContainer"
 					backgroundImage={loadingImages.robot2}
-					elementRef={SocialContainer}
+					elementRef={OurGoalContainer}
+					imgAssetLoader="OurGoal"
 				/>
 				<ContentContainer
-					content={<>{CONTACT}</>}
-					title="Contact"
-					className="ContactContainer"
+					content={<>{NON_PROFIT}</>}
+					title="Non Profit"
+					className="NonProfitContainer"
 					backgroundImage={loadingImages.sleepyRobotBall}
-					elementRef={ContactContainer}
+					elementRef={NonProfitContainer}
+					imgAssetLoader="NonProfit"
 				/>
 				<ContentContainer
 					content={<>{DONATE}</>}
@@ -106,7 +109,9 @@ function App() {
 					className="DonateContainer"
 					backgroundImage={loadingImages.sideWaysRobot}
 					elementRef={DonateContainer}
+					imgAssetLoader="Donate"
 				/>
+				
 			</div>
 		</appContext.Provider>
 	);

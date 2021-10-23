@@ -1,4 +1,4 @@
-import React, { FC, useContext , useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { TEAM_NAME } from '../strings';
 import { appContext } from '../App';
 import { scrollToRef } from '../modules';
@@ -8,8 +8,8 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 	const {
 		AboutContainer,
 		LandingContainer,
-		SocialContainer,
-		ContactContainer,
+		NonProfitContainer,
+		OurGoalContainer,
 		DonateContainer,
 		topBarTitle,
 	} = useContext(appContext) as appContextType;
@@ -38,39 +38,28 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 			}
 		}
 	}
+	const TopBarSection: FC<{
+		className?: string;
+		containerRef: React.MutableRefObject<HTMLDivElement | null>;
+		text: string;
+	}> = ({ className, containerRef, text }) => {
+		return (
+			<div
+				className={className ? className : 'topBarButton'}
+				onClick={() => scrollToRef(containerRef)}
+			>
+				{text}
+			</div>
+		);
+	};
 	return (
 		<div className="TopBar">
 			{TopBarAnimationHandler()}
-			<div
-				className="topBarButton"
-				onClick={() => scrollToRef(LandingContainer)}
-			>
-				Home
-			</div>
-			<div
-				className="topBarButton"
-				onClick={() => scrollToRef(AboutContainer)}
-			>
-				About
-			</div>
-			<div
-				className="topBarButton"
-				onClick={() => scrollToRef(SocialContainer)}
-			>
-				Social
-			</div>
-			<div
-				className="topBarButton"
-				onClick={() => scrollToRef(ContactContainer)}
-			>
-				Contact
-			</div>
-			<div
-				className="topBarButton"
-				onClick={() => {
-					scrollToRef(DonateContainer);
-				}}
-			>Donate</div>
+			<TopBarSection containerRef={LandingContainer} text="Home" />
+			<TopBarSection containerRef={AboutContainer} text="About" />
+			<TopBarSection containerRef={OurGoalContainer} text="Our Goal" />
+			<TopBarSection containerRef={NonProfitContainer} text="Non-Profit" />
+			<TopBarSection containerRef={DonateContainer} text="Donate" />
 		</div>
 	);
 };
