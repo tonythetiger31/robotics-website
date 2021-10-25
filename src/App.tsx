@@ -3,7 +3,7 @@ import robot from './resources/robot.jpg';
 import robot2 from './resources/robot2.jpg';
 import sideWaysRobot from './resources/sideWaysRobot.jpg';
 import sleepyRobotBall from './resources/sleepyRobotBall.jpg';
-import React, { useRef, createContext, useState, useEffect } from 'react';
+import React, { useRef, createContext, useState } from 'react';
 import LandingPage from './components/LandingContainer';
 import TopBar from './components/TopBar';
 import { divInView, Loader } from './modules';

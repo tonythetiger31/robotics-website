@@ -3,7 +3,6 @@ import { TEAM_NAME } from '../strings';
 import { appContext } from '../App';
 import { scrollToRef } from '../modules';
 import { appContextType } from '../types';
-import hamburgerButton from '../resources/hamburgerButton.svg';
 
 const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 	const {
