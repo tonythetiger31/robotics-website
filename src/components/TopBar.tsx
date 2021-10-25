@@ -3,6 +3,7 @@ import { TEAM_NAME } from '../strings';
 import { appContext } from '../App';
 import { scrollToRef } from '../modules';
 import { appContextType } from '../types';
+import hamburgerButton from '../resources/hamburgerButton.svg';
 
 const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 	const {
@@ -14,6 +15,8 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 		topBarTitle,
 	} = useContext(appContext) as appContextType;
 	const [animated, setAnimated] = useState(false);
+	const [hamburgerMenuIsDisplayed, sethamburgerMenuIsDisplayed] =
+		useState(false);
 	function titleDiv(animation: 'appear' | 'disappear'): JSX.Element {
 		return (
 			<div
@@ -46,7 +49,10 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 		return (
 			<div
 				className={className ? className : 'topBarButton'}
-				onClick={() => scrollToRef(containerRef)}
+				onClick={() => {
+					scrollToRef(containerRef);
+					sethamburgerMenuIsDisplayed(false);
+				}}
 			>
 				{text}
 			</div>
@@ -57,9 +63,31 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 			{TopBarAnimationHandler()}
 			<TopBarSection containerRef={LandingContainer} text="Home" />
 			<TopBarSection containerRef={AboutContainer} text="About" />
-			<TopBarSection containerRef={OurGoalContainer} text="Our Goal" />
+			<TopBarSection containerRef={OurGoalContainer} text="Our goal" />
 			<TopBarSection containerRef={NonProfitContainer} text="Non-Profit" />
 			<TopBarSection containerRef={DonateContainer} text="Donate" />
+			<div
+				className={`hamburgerButton-${
+					hamburgerMenuIsDisplayed ? 'active' : 'normal'
+				}`}
+				onClick={() => sethamburgerMenuIsDisplayed(prev => !prev)}
+			>
+				<span className="line line-1"></span>
+				<span className="line line-2"></span>
+				<span className="line line-3"></span>
+			</div>
+			{hamburgerMenuIsDisplayed && (
+				<div className="hamburgerMenu">
+					<TopBarSection containerRef={LandingContainer} text="Home" />
+					<TopBarSection containerRef={AboutContainer} text="About" />
+					<TopBarSection containerRef={OurGoalContainer} text="Our goal" />
+					<TopBarSection
+						containerRef={NonProfitContainer}
+						text="Non-Profit"
+					/>
+					<TopBarSection containerRef={DonateContainer} text="Donate" />
+				</div>
+			)}
 		</div>
 	);
 };

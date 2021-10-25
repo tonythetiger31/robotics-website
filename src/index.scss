@@ -6,6 +6,7 @@ $darkAccent: #7e7ca7;
 $darkShade: #201c37;
 /*SHADOW SCHEME*/
 $darkShadeShadow: #201c37b6;
+$darkShadeClear: #201c37e7;
 /*FONTS*/
 $fontBebasNeue: 'Bebas Neue', sans-serif;
 $fontRobotoCondensed: 'Roboto Condensed', sans-serif;
@@ -48,25 +49,24 @@ body {
 	background-color: $lightShade;
 	margin: 0;
 	font-family: 'Roboto Condensed', sans-serif;
-}	
-.App{
+}
+.App {
 	animation: slideIn 1s;
 }
-@keyframes slideIn{
-	0%{
+@keyframes slideIn {
+	0% {
 		opacity: 0;
 	}
-	100%{
+	100% {
 		opacity: 1;
 	}
-
 }
-.loaderContainer{
+.loaderContainer {
 	z-index: 1;
 	height: 100vh;
 	width: 100vw;
-	display:grid;
-	place-items:center;
+	display: grid;
+	place-items: center;
 	position: fixed;
 	background-color: $lightShade;
 	.loader {
@@ -75,7 +75,7 @@ body {
 		border-top: 16px solid $mainColor;
 		width: 120px;
 		height: 120px;
-		animation: spin .7s linear infinite;
+		animation: spin 0.7s linear infinite;
 	}
 	@keyframes spin {
 		0% {
@@ -108,11 +108,17 @@ body {
 	}
 	.title {
 		@include teamTitle(40px, 3px 6px);
+		display: block;
 		animation-name: appear;
 		animation-duration: 0.3s;
-		overflow: hidden;
 		flex-basis: auto;
-		display: block;
+		flex-wrap: nowrap;
+		height: calc(#{$topBarHeight} - 6px);
+		overflow: hidden;
+	}
+	.hamburgerButton {
+		//mobile only
+		display: none;
 	}
 	@keyframes disappear {
 		0% {
@@ -144,22 +150,14 @@ body {
 	.title {
 		@include teamTitle(90px, 0px);
 		color: $mainColor;
-		// animation: expandLettering 1s;
 	}
-	// @keyframes expandLettering {
-	// 	0% {
-	// 		letter-spacing: -0.2em;
-	// 	}
-	// 	100%{
-	// 		letter-spacing: normal;
-	// 	}
-	// }
 	.moto {
 		font-size: 40px;
 		color: $darkShade;
 		margin-bottom: 10px;
 	}
 	button {
+		-webkit-tap-highlight-color: transparent;
 		@include normalButton(30px, $lightAccent, $darkShade, $fontBebasNeue);
 		box-shadow: inset 0 0 0 0 $mainColor;
 		transition: ease-out 0.7s;
@@ -174,13 +172,29 @@ body {
 		@include subtitle();
 	}
 	.childContainer {
+		overflow-Y: auto;
 		font-size: 35px;
 		margin: 20vw;
+		max-height: $defaultHeightForSections;
+		height: auto;
+		width: auto;
+	}
+}
+.AboutContainer button{
+	-webkit-tap-highlight-color: transparent;
+	@include normalButton(30px, $lightAccent, $darkShade, $fontBebasNeue);
+	margin-top: 0.3em;
+	display: block;
+	letter-spacing: 0.5px;
+	box-shadow: inset 0 0 0 0 $mainColor;
+	transition: ease-out 0.4s;
+	&:hover {
+		box-shadow: inset 8.5em 0 0 0 $mainColor;
 	}
 }
 
-.DonateContainer {
-	button {
+.DonateContainer button{
+		-webkit-tap-highlight-color: transparent;
 		@include normalButton(30px, $lightAccent, $darkShade, $fontBebasNeue);
 		margin-top: 0.3em;
 		display: block;
@@ -189,6 +203,109 @@ body {
 		transition: ease-out 0.4s;
 		&:hover {
 			box-shadow: inset 8.5em 0 0 0 $mainColor;
+		}
+}
+$mult: 2;
+@media only screen and (max-width: 840px) {
+	.ContentContainer .childContainer {
+		margin: 0 10vw;
+	}
+	.TopBar {
+		justify-content: unset;
+		padding: 0 1%;
+		.title {
+			display: inline;
+			float: left;
+		}
+		.topBarButton {
+			display: none;
+		}
+		@mixin hamburgerButton {
+			-webkit-tap-highlight-color: transparent;
+			display: block;
+			cursor: pointer;
+			margin-left: auto;
+			height: 80%;
+			.line {
+				display: block;
+				width: calc(29px * #{$mult});
+				height: calc(3px * #{$mult});
+				background-color: white;
+				margin: calc(6px * #{$mult}) 0;
+				opacity: 1;
+				transition: 0.3s all;
+			}
+			.line:nth-child(1) {
+				margin-top: auto;
+			}
+			.line:nth-child(3) {
+				margin-bottom: auto;
+			}
+		}
+		.hamburgerButton-normal {
+			@include hamburgerButton();
+		}
+		.hamburgerButton-active {
+			@include hamburgerButton();
+			.line:nth-child(1) {
+				transform: translateY(calc(9px * #{$mult})) rotate(45deg);
+				transition: 0.3s all;
+			}
+			.line:nth-child(2) {
+				opacity: 0;
+				transition: 0.3s all;
+			}
+			.line:nth-child(3) {
+				transform: translateY(calc(-9px * #{$mult})) rotate(-45deg);
+				transition: 0.3s all;
+			}
+		}
+		.hamburgerMenu {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			position: absolute;
+			top: $topBarHeight;
+			left: 0;
+			background-color: $darkShadeClear;
+			z-index: 1;
+			width: 100%´;
+			height: calc(100vh - #{$topBarHeight});
+			animation: slide 0.4s;
+			text-align: center;
+			.topBarButton {
+				margin: 0.5em 0;
+				font-size: 40px;
+				display: block;
+				-webkit-tap-highlight-color: transparent;
+			}
+		}
+		@keyframes slide {
+			0% {
+				transform: translateX(-100vw);
+				opacity: 0;
+			}
+			100% {
+				transform: translateX(0vw);
+				opacity: 1;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 425px) {
+	.ContentContainer {
+		.childContainer {
+			margin: 5vw;
+			font-size: 8vw;
+		}
+	}
+	.LandingContainer {
+		background-attachment: scroll;
+		.title,
+		.moto,
+		button {
+			margin-left: 20vw;
+			margin-right: 20vw;
 		}
 	}
 }

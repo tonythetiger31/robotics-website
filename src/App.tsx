@@ -8,7 +8,7 @@ import LandingPage from './components/LandingContainer';
 import TopBar from './components/TopBar';
 import { divInView, Loader } from './modules';
 import ContentContainer from './components/ContentContainer';
-import { ABOUT, DONATE, RESPONSIVENESS_WARNING, OUR_GOAL, NON_PROFIT } from './strings';
+import { ABOUT, DONATE, OUR_GOAL, NON_PROFIT } from './strings';
 import { loaded } from './types';
 export const appContext: any = createContext(null);
 
@@ -21,11 +21,6 @@ function App() {
 		NonProfit: false,
 		Donate: false,
 	});
-	useEffect(() => {
-		if (window.innerHeight > window.innerWidth) {
-			alert(RESPONSIVENESS_WARNING)
-		}
-	},[])
 	const AboutContainer = useRef<HTMLDivElement>(null),
 		LandingContainer = useRef<HTMLDivElement>(null),
 		OurGoalContainer = useRef<HTMLDivElement>(null),
@@ -48,7 +43,6 @@ function App() {
 			: setDisplayTitle(false);
 	});
 
-
 	for (var image in allImages) {
 		var newImage = new Image();
 		newImage.src = allImages[image];
@@ -61,16 +55,16 @@ function App() {
 
 	return (
 		<appContext.Provider
-		value={{
-			AboutContainer,
-			LandingContainer,
-			OurGoalContainer,
-			NonProfitContainer,
-			DonateContainer,
-			landingTitleDiv,
-			topBarTitle,
-			setAssetsLoaded,
-		}}
+			value={{
+				AboutContainer,
+				LandingContainer,
+				OurGoalContainer,
+				NonProfitContainer,
+				DonateContainer,
+				landingTitleDiv,
+				topBarTitle,
+				setAssetsLoaded,
+			}}
 		>
 			<Loader allAssetsAreLoaded={allAssetsAreLoaded} />
 			<div
@@ -111,7 +105,6 @@ function App() {
 					elementRef={DonateContainer}
 					imgAssetLoader="Donate"
 				/>
-				
 			</div>
 		</appContext.Provider>
 	);
