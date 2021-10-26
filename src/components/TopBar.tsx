@@ -8,7 +8,6 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 	const {
 		AboutContainer,
 		LandingContainer,
-		NonProfitContainer,
 		OurGoalContainer,
 		DonateContainer,
 		topBarTitle,
@@ -57,35 +56,33 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 			</div>
 		);
 	};
-	return (
-		<div className="TopBar">
-			{TopBarAnimationHandler()}
+	const scrollLinks = (
+		<>
 			<TopBarSection containerRef={LandingContainer} text="Home" />
 			<TopBarSection containerRef={AboutContainer} text="About" />
 			<TopBarSection containerRef={OurGoalContainer} text="Our goal" />
-			<TopBarSection containerRef={NonProfitContainer} text="Non-Profit" />
 			<TopBarSection containerRef={DonateContainer} text="Donate" />
-			<div
-				className={`hamburgerButton-${
-					hamburgerMenuIsDisplayed ? 'active' : 'normal'
-				}`}
-				onClick={() => sethamburgerMenuIsDisplayed(prev => !prev)}
-			>
-				<span className="line line-1"></span>
-				<span className="line line-2"></span>
-				<span className="line line-3"></span>
-			</div>
+		</>
+	);
+	const hamburgerButton = (
+		<div
+			className={`hamburgerButton-${
+				hamburgerMenuIsDisplayed ? 'active' : 'normal'
+			}`}
+			onClick={() => sethamburgerMenuIsDisplayed(prev => !prev)}
+		>
+			<span className="line line-1"></span>
+			<span className="line line-2"></span>
+			<span className="line line-3"></span>
+		</div>
+	);
+	return (
+		<div className="TopBar">
+			{TopBarAnimationHandler()}
+			{scrollLinks}
+			{hamburgerButton}
 			{hamburgerMenuIsDisplayed && (
-				<div className="hamburgerMenu">
-					<TopBarSection containerRef={LandingContainer} text="Home" />
-					<TopBarSection containerRef={AboutContainer} text="About" />
-					<TopBarSection containerRef={OurGoalContainer} text="Our goal" />
-					<TopBarSection
-						containerRef={NonProfitContainer}
-						text="Non-Profit"
-					/>
-					<TopBarSection containerRef={DonateContainer} text="Donate" />
-				</div>
+				<div className="hamburgerMenu">{scrollLinks}</div>
 			)}
 		</div>
 	);

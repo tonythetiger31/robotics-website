@@ -8,7 +8,7 @@ import LandingPage from './components/LandingContainer';
 import TopBar from './components/TopBar';
 import { divInView, Loader } from './modules';
 import ContentContainer from './components/ContentContainer';
-import { ABOUT, DONATE, OUR_GOAL, NON_PROFIT } from './strings';
+import { ABOUT, DONATE, OUR_GOAL  } from './strings';
 import { loaded } from './types';
 export const appContext: any = createContext(null);
 
@@ -18,13 +18,11 @@ function App() {
 		Landing: false,
 		About: false,
 		OurGoal: false,
-		NonProfit: false,
 		Donate: false,
 	});
 	const AboutContainer = useRef<HTMLDivElement>(null),
 		LandingContainer = useRef<HTMLDivElement>(null),
 		OurGoalContainer = useRef<HTMLDivElement>(null),
-		NonProfitContainer = useRef<HTMLDivElement>(null),
 		DonateContainer = useRef<HTMLDivElement>(null),
 		landingTitleDiv = useRef<HTMLDivElement>(null),
 		topBarTitle = useRef<HTMLDivElement>(null),
@@ -59,7 +57,6 @@ function App() {
 				AboutContainer,
 				LandingContainer,
 				OurGoalContainer,
-				NonProfitContainer,
 				DonateContainer,
 				landingTitleDiv,
 				topBarTitle,
@@ -88,14 +85,6 @@ function App() {
 					backgroundImage={loadingImages.robot2}
 					elementRef={OurGoalContainer}
 					imgAssetLoader="OurGoal"
-				/>
-				<ContentContainer
-					content={<>{NON_PROFIT}</>}
-					title="Non Profit"
-					className="NonProfitContainer"
-					backgroundImage={loadingImages.sleepyRobotBall}
-					elementRef={NonProfitContainer}
-					imgAssetLoader="NonProfit"
 				/>
 				<ContentContainer
 					content={<>{DONATE}</>}

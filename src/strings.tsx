@@ -13,11 +13,9 @@ export const ABOUT = (
 );
 export const OUR_GOAL =
 	"Our team's goal is to develop engineering, business, and teamwork skills by participating in the FIRST® Robotics team competition in the Spring of 2022. In this competition, our team will design, build, and program a one-of-a-kind robot to compete and win against other teams from all over the country.";
-export const NON_PROFIT =
-	"Our team's goal is to develop engineering, business, and teamwork skills by participating in the FIRST® robotics team competition in the spring of 2022. In this competition, our team will design, build, and program a one-of-a-kind robot to compete and win against other teams from all over the country.";
 export const DONATE = (
 	<>
-		please consider donating or sponsoring at our booster club site
+		As a 501(C)(3) nonprofit organization, our teams will work to encourage STEM careers in our members along with any engineering skills and experience they may need. Please consider donating or sponsoring at our booster club site
 		<button
 			onClick={() => (window.location.href = 'http://tsaroboticsclub.com')}
 		>
