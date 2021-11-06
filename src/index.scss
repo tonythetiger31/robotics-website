@@ -116,7 +116,7 @@ body {
 		height: calc(#{$topBarHeight} - 6px);
 		overflow: hidden;
 	}
-	.hamburgerButton {
+	.hamburgerButton-normal, .hamburgerButton-active {
 		//mobile only
 		display: none;
 	}

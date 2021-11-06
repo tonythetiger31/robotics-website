@@ -1,22 +1,14 @@
 import React, { FC, useContext, useState } from 'react';
 import { appContext } from '../App';
-import { appContextType, loaded } from '../types';
-const ContentContainer: FC<{
-	content: JSX.Element;
-	title: string;
-	className: string;
-	elementRef: React.MutableRefObject<HTMLDivElement | null>;
-	backgroundImage: HTMLImageElement;
-	fullContainerAccess?: boolean;
-	imgAssetLoader: string;
-}> = ({
+import { appContextType, contentContainerType, loaded } from '../types';
+const ContentContainer: FC<contentContainerType> = ({
 	content,
 	title,
 	className,
 	elementRef,
 	backgroundImage,
 	fullContainerAccess,
-	imgAssetLoader
+	imgAssetLoader,
 }) => {
 	const { setAssetsLoaded } = useContext(appContext) as appContextType;
 	const [backGroundImageToBeDisplayed, setbackGroundImageToBeDisplayed] =

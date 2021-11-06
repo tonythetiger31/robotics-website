@@ -15,3 +15,12 @@ export interface loaded{
 	OurGoal: boolean
 	Donate: boolean
 }
+export type contentContainerType = {
+		title: string;
+		className: string;
+		imgAssetLoader: string;
+		backgroundImage: HTMLImageElement;
+		elementRef: React.MutableRefObject<HTMLDivElement | null>;
+		fullContainerAccess?: boolean;
+		content: JSX.Element;
+	}

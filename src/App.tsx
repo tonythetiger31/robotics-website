@@ -8,7 +8,7 @@ import LandingPage from './components/LandingContainer';
 import TopBar from './components/TopBar';
 import { divInView, Loader } from './modules';
 import ContentContainer from './components/ContentContainer';
-import { ABOUT, DONATE, OUR_GOAL  } from './strings';
+import { ABOUT, DONATE, OUR_GOAL } from './strings';
 import { loaded } from './types';
 export const appContext: any = createContext(null);
 
