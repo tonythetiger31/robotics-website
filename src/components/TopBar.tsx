@@ -10,6 +10,7 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 		LandingContainer,
 		OurGoalContainer,
 		DonateContainer,
+		SponsorsContainer, 
 		topBarTitle,
 	} = useContext(appContext) as appContextType;
 	const [animated, setAnimated] = useState(false);
@@ -61,7 +62,9 @@ const TopBar: FC<{ displayTitle: boolean }> = ({ displayTitle }) => {
 			<TopBarSection containerRef={LandingContainer} text="Home" />
 			<TopBarSection containerRef={AboutContainer} text="About" />
 			<TopBarSection containerRef={OurGoalContainer} text="Our goal" />
+			<TopBarSection containerRef={SponsorsContainer} text="Sponsors" />
 			<TopBarSection containerRef={DonateContainer} text="Donate" />
+
 		</>
 	);
 	const hamburgerButton = (

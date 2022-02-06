@@ -24,9 +24,11 @@ export function divInView(
 	}
 	return undefined;
 }
+
 const Loader: FC<{ allAssetsAreLoaded: boolean }> = ({
 	allAssetsAreLoaded,
 }) => {
+	//note that each container much have a unique image, idk why it just must or else it wont work
 	return (
 		<>
 			{!allAssetsAreLoaded && (

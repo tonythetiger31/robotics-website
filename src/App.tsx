@@ -8,7 +8,7 @@ import LandingPage from './components/LandingContainer';
 import TopBar from './components/TopBar';
 import { divInView, Loader } from './modules';
 import ContentContainer from './components/ContentContainer';
-import { ABOUT, DONATE, OUR_GOAL } from './strings';
+import { ABOUT, DONATE, OUR_GOAL, SPONSORS } from './strings';
 import { loaded } from './types';
 export const appContext: any = createContext(null);
 
@@ -19,11 +19,13 @@ function App() {
 		About: false,
 		OurGoal: false,
 		Donate: false,
+		Sponsors: false
 	});
 	const AboutContainer = useRef<HTMLDivElement>(null),
 		LandingContainer = useRef<HTMLDivElement>(null),
 		OurGoalContainer = useRef<HTMLDivElement>(null),
 		DonateContainer = useRef<HTMLDivElement>(null),
+		SponsorsContainer = useRef<HTMLDivElement>(null),
 		landingTitleDiv = useRef<HTMLDivElement>(null),
 		topBarTitle = useRef<HTMLDivElement>(null),
 		allImages: any = {
@@ -58,6 +60,7 @@ function App() {
 				LandingContainer,
 				OurGoalContainer,
 				DonateContainer,
+				SponsorsContainer,
 				landingTitleDiv,
 				topBarTitle,
 				setAssetsLoaded,
@@ -85,6 +88,14 @@ function App() {
 					backgroundImage={loadingImages.robot2}
 					elementRef={OurGoalContainer}
 					imgAssetLoader="OurGoal"
+				/>
+				<ContentContainer
+					content={<>{SPONSORS}</>}
+					title="Sponsors"
+					className="SponsorsContainer"
+					backgroundImage={loadingImages.sleepyRobotBall}
+					elementRef={SponsorsContainer}
+					imgAssetLoader="Sponsors"
 				/>
 				<ContentContainer
 					content={<>{DONATE}</>}

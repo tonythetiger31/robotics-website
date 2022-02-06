@@ -1,3 +1,4 @@
+import kiddieAcademyLogo from './resources/kiddieAcademyLogo.svg';
 export const TEAM_NAME = 'TSA ALL STARS';
 export const MOTO = "we're geared up";
 export const ABOUT = (
@@ -21,6 +22,15 @@ export const DONATE = (
 		>
 			tsaroboticsclub.com
 		</button>
+	</>
+);
+export const SPONSORS = (
+	<>
+		<img
+			style={{"width":"90vw"}}
+			alt="Kiddie Academy Logo"
+			src={kiddieAcademyLogo}
+		/>
 	</>
 );
 export const RESPONSIVENESS_WARNING =

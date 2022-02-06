@@ -5,6 +5,7 @@ export interface appContextType {
 	LandingContainer: React.MutableRefObject<HTMLDivElement | null>
 	OurGoalContainer: React.MutableRefObject<HTMLDivElement | null>
 	DonateContainer: React.MutableRefObject<HTMLDivElement | null>
+	SponsorsContainer: React.MutableRefObject<HTMLDivElement | null>
 	landingTitleDiv: React.MutableRefObject<HTMLDivElement | null>
 	topBarTitle: React.MutableRefObject<HTMLDivElement | null>
 	setAssetsLoaded: React.Dispatch<React.SetStateAction<loaded>>
@@ -14,6 +15,7 @@ export interface loaded{
 	About: boolean
 	OurGoal: boolean
 	Donate: boolean
+	Sponsors: boolean
 }
 export type contentContainerType = {
 		title: string;

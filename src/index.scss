@@ -36,7 +36,7 @@ $containerGradient: rgba(255, 255, 255, 0.699), rgba(255, 255, 255, 0.699);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: $defaultHeightForSections;
+	min-height: $defaultHeightForSections;
 	background-position: center;
 	background-size: cover;
 }
@@ -140,7 +140,7 @@ body {
 	}
 }
 .LandingContainer {
-	height: $defaultHeightForSections;
+	min-height: $defaultHeightForSections;
 	display: grid;
 	place-items: center;
 	background-position: center;
@@ -172,11 +172,9 @@ body {
 		@include subtitle();
 	}
 	.childContainer {
-		overflow-Y: auto;
 		font-size: 35px;
 		margin: 20vw;
-		max-height: $defaultHeightForSections;
-		height: auto;
+		min-height: auto;
 		width: auto;
 	}
 }
@@ -206,7 +204,7 @@ body {
 		}
 }
 $mult: 2;
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 1000px) {
 	.ContentContainer .childContainer {
 		margin: 0 10vw;
 	}
