@@ -16,11 +16,16 @@ export const OUR_GOAL =
 	"Our team's goal is to develop engineering, business, and teamwork skills by participating in the FIRST® Robotics team competition in the Spring of 2022. In this competition, our team will design, build, and program a one-of-a-kind robot to compete and win against other teams from all over the country.";
 export const DONATE = (
 	<>
-		As a 501(C)(3) nonprofit organization, our teams will work to encourage STEM careers in our members along with any engineering skills and experience they may need. Please consider donating or sponsoring at our booster club site
+		As a 501(C)(3) nonprofit organization, our teams will work to encourage STEM careers in our members along with any engineering skills and experience they may need. Please consider donating or sponsoring us.
+		<button
+			onClick={() => (window.location.href = 'https://www.paypal.com/donate/?hosted_button_id=BGGBYATAW2ERW')}
+		>
+			Donate
+		</button>
 		<button
 			onClick={() => (window.location.href = 'http://tsaroboticsclub.com')}
 		>
-			tsaroboticsclub.com
+			booster club site
 		</button>
 	</>
 );
@@ -31,6 +36,7 @@ export const SPONSORS = (
 			alt="Kiddie Academy Logo"
 			src={kiddieAcademyLogo}
 		/>
+		<button onClick={() => (window.location.href = '/TSARoboticsClub-Sponsorship.pdf')}>Sponsor Us</button>
 	</>
 );
 export const RESPONSIVENESS_WARNING =

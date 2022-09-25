@@ -203,6 +203,21 @@ body {
 			box-shadow: inset 8.5em 0 0 0 $mainColor;
 		}
 }
+
+.SponsorsContainer button{
+	-webkit-tap-highlight-color: transparent;
+	@include normalButton(40px, $lightAccent, $darkShade, $fontBebasNeue);
+	margin-top: 0.3em;
+	display: block;
+	letter-spacing: 0.5px;
+	box-shadow: inset 0 0 0 0 $mainColor;
+	transition: ease-out 0.4s;
+	margin-left:10vw;
+	&:hover {
+		box-shadow: inset 8.5em 0 0 0 $mainColor;
+	}
+}
+
 $mult: 2;
 @media only screen and (max-width: 1000px) {
 	.ContentContainer .childContainer {
